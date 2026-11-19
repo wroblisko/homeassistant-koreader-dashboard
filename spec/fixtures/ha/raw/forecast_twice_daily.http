@@ -1,0 +1,9 @@
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+Server: 
+X-Frame-Options: SAMEORIGIN
+Content-Length: 91
+
+{"message":"Weather entity 'weather.forecast_dom' does not support 'twice_daily' forecast"}

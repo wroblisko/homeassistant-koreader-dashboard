@@ -1,0 +1,10 @@
+HTTP/1.1 405 Method Not Allowed
+Content-Type: text/plain; charset=utf-8
+Allow: OPTIONS,POST
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+Server: 
+X-Frame-Options: SAMEORIGIN
+Content-Length: 23
+
+405: Method Not Allowed

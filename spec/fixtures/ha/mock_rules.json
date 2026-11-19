@@ -1,0 +1,53 @@
+{
+  "script.otworz_garaz": [
+    {
+      "after": 0,
+      "entity_id": "script.otworz_garaz",
+      "state": "on"
+    },
+    {
+      "after": 4,
+      "entity_id": "binary_sensor.brama_garazowa",
+      "state": "on"
+    },
+    {
+      "after": 4,
+      "entity_id": "script.otworz_garaz",
+      "state": "off"
+    }
+  ],
+  "script.zamknij_garaz": [
+    {
+      "after": 0,
+      "entity_id": "script.zamknij_garaz",
+      "state": "on"
+    },
+    {
+      "after": 4,
+      "entity_id": "binary_sensor.brama_garazowa",
+      "state": "off"
+    },
+    {
+      "after": 4,
+      "entity_id": "script.zamknij_garaz",
+      "state": "off"
+    }
+  ],
+  "script.otworz_wszystko": [
+    {
+      "after": 0,
+      "entity_id": "script.otworz_wszystko",
+      "state": "on"
+    },
+    {
+      "after": 4,
+      "entity_id": "binary_sensor.brama_garazowa",
+      "state": "on"
+    },
+    {
+      "after": 4,
+      "entity_id": "script.otworz_wszystko",
+      "state": "off"
+    }
+  ]
+}

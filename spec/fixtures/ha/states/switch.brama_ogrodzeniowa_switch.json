@@ -1,0 +1,1 @@
+{"entity_id":"switch.brama_ogrodzeniowa_switch","state":"off","attributes":{"device_class":"outlet","friendly_name":"Brama ogrodzeniowa  Switch"},"last_changed":"2026-11-14T12:04:16.441066+00:00","last_reported":"2026-11-14T12:04:16.441066+00:00","last_updated":"2026-11-14T12:04:16.441066+00:00","context":{"id":"01M7CZ3AXS9P50WYV51HKYPKYA","parent_id":null,"user_id":null}}

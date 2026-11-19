@@ -1,0 +1,12 @@
+# build and run output
+out/
+dist/
+
+# secrets and personal config
+dev/config.real.lua
+*.token
+.homedash-token
+
+# editors, OS
+*.swp
+.DS_Store
