@@ -22,11 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leafo/gh-actions-lua@v10
-        with:
-          luaVersion: "luajit-2.1.0-beta3"
-      - uses: leafo/gh-actions-luarocks@v4
-      - name: Install busted and dkjson
-        run: luarocks install busted && luarocks install dkjson
-      - name: busted
-        run: busted --lpath='./homedash.koplugin/?.lua' spec
+      - name: Install Lua 5.1, luarocks, busted and dkjson
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1 liblua5.1-0-dev luarocks
+          sudo luarocks --lua-version=5.1 install busted
+          sudo luarocks --lua-version=5.1 install dkjson
+      - name: Unit tests
+        run: bash scripts/test.sh
