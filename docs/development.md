@@ -237,3 +237,11 @@ Restart KOReader to load the new code. The device-side log is `koreader/crash.lo
 - Network calls block the UI thread: keep timeouts short and stop a refresh after the first network error.
 - Put logic in the pure modules and test it; keep `homedash_view.lua` to layout and drawing.
 - User-visible text goes through `homedash_i18n.lua` (both `en` and `pl`).
+
+## Releasing
+
+1. Bump `version` in `homedash.koplugin/_meta.lua` and move the `CHANGELOG.md` "Unreleased" entries under the new version.
+2. Commit, then tag and push: `git tag v0.2.0 && git push origin main v0.2.0`.
+3. `.github/workflows/release.yml` checks that the tag matches `_meta.lua`, runs the unit tests, builds the zip with
+   `scripts/package.sh` and publishes a GitHub release with `homedash.koplugin-<version>.zip` and the stable
+   `homedash.koplugin.zip` (used by the README's "latest" link and by plugin updaters).

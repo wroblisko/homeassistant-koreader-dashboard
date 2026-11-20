@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tag must match _meta.lua version
+        run: |
+          meta=$(sed -n 's/^[[:space:]]*version[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1/p' homedash.koplugin/_meta.lua | head -n 1)
+          tag="${GITHUB_REF_NAME#v}"
+          echo "tag=$tag meta=$meta"
+          test "$tag" = "$meta" || { echo "::error::tag $GITHUB_REF_NAME does not match _meta.lua version $meta"; exit 1; }
+
+      - name: Unit tests
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1 liblua5.1-0-dev luarocks zip
+          sudo luarocks --lua-version=5.1 install busted
+          sudo luarocks --lua-version=5.1 install dkjson
+          bash scripts/test.sh
+
+      - name: Build zip
+        run: bash scripts/package.sh
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "dist/homedash.koplugin-${GITHUB_REF_NAME#v}.zip" \
+            dist/homedash.koplugin.zip \
+            --title "homedash $GITHUB_REF_NAME" \
+            --generate-notes

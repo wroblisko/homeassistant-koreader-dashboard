@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Build dist/homedash.koplugin-<version>.zip from homedash.koplugin/.
+# Build dist/homedash.koplugin-<version>.zip (and a copy dist/homedash.koplugin.zip)
+# from homedash.koplugin/.
 #
 # The version is read from homedash.koplugin/_meta.lua (`version = "x.y.z"`).
 # The zip has one top-level folder, homedash.koplugin/, so unzipping it into
@@ -40,5 +41,7 @@ find "$PLUGIN" -type f \
     | LC_ALL=C sort \
     | zip -X -q "$zip_path" -@
 
-echo "package.sh: $zip_path"
+# Stable name for https://github.com/<owner>/<repo>/releases/latest/download/homedash.koplugin.zip
+cp "$zip_path" "$out_dir/$PLUGIN.zip"
+echo "package.sh: $zip_path (+ $out_dir/$PLUGIN.zip)"
 unzip -l "$zip_path" | tail -n +4 | sed '$d' | sed '$d'

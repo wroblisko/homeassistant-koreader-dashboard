@@ -72,10 +72,18 @@ dashboard is operated by tapping buttons.
 
 ## Installation
 
-1. Download `homedash.koplugin-<version>.zip` from the [releases page](https://github.com/wroblisko/homeassistant-koreader-dashboard/releases) (or build it with
-   `bash scripts/package.sh`), or clone this repository. Copy the **`homedash.koplugin`** folder to
-   `koreader/plugins/` on the device (on a Kindle: `/mnt/us/koreader/plugins/`). Over Wi-Fi you can
-   use `scripts/deploy.sh` ([docs/development.md](docs/development.md#deploying-to-a-device-over-ssh)).
+1. Download the latest **[homedash.koplugin.zip](https://github.com/wroblisko/homeassistant-koreader-dashboard/releases/latest/download/homedash.koplugin.zip)**
+   (all versions: [releases page](https://github.com/wroblisko/homeassistant-koreader-dashboard/releases)) and unzip it
+   into `koreader/plugins/` on the device (on a Kindle: `/mnt/us/koreader/plugins/`); the zip contains the
+   `homedash.koplugin` folder. Alternatives:
+   - a plugin store on the device: [appstore.koplugin](https://github.com/omer-faruq/appstore.koplugin) /
+     [KoStore](https://github.com/ThePixelPro366/KoStore) find it via the `koreader-plugin` GitHub topic, and
+     [updatesmanager.koplugin](https://github.com/advokatb/updatesmanager.koplugin) can keep it updated from releases;
+   - over Wi-Fi with `scripts/deploy.sh` ([docs/development.md](docs/development.md#deploying-to-a-device-over-ssh));
+   - build the zip yourself with `bash scripts/package.sh`.
+
+   Updating: replace the `homedash.koplugin` folder the same way and restart KOReader. Your config and token
+   in `koreader/settings/` are not touched.
 2. Copy `homedash.koplugin/config.example.lua` to `koreader/settings/homedash_config.lua`
    (`/mnt/us/koreader/settings/homedash_config.lua`) and edit the URL, the entity ids and the buttons.
 3. Put the token in a file, one line, for example `/mnt/us/koreader/settings/homedash.token`
